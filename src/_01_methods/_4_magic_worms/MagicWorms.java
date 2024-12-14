@@ -1,4 +1,4 @@
-package _01_methods._4_magic_worms.MagicWorms;
+package _01_methods._4_magic_worms;
 
 import processing.core.PApplet;
 
@@ -30,8 +30,8 @@ import processing.core.PApplet;
  *    "red value", and i as the "green value" for some extra color coolness.
  */
 public class MagicWorms extends PApplet {
-    static final int WIDTH = 600;
-    static final int HEIGHT = 400;
+    static final int WIDTH = 500;
+    static final int HEIGHT = 500;
 
     @Override
     public void settings() {
@@ -40,15 +40,21 @@ public class MagicWorms extends PApplet {
 
     @Override
     public void setup() {
-
+    	fill(245, 75, 49);
+    	for(int i=300;i>=0;i--) {
+			
+    		float x = getWormX(i);
+    		float y = getWormY(i);
+    		ellipse(x,y,7,3);
+    	}
     }
 
     @Override
     public void draw() {
-
+    	
     }
 
-    static public void main(String[] args) {
+    public static  void main(String[] args) {
         PApplet.main(MagicWorms.class.getName());
     }
 
@@ -63,10 +69,10 @@ public class MagicWorms extends PApplet {
     }
 
     float getWormX(int i) {
-        return map(noise(i * noiseInterval + frameCount * frequency), 0, 1, 0, width);
+        return map(noise(i*10 * noiseInterval + frameCount * frequency), 0, 1, 0, width);
     }
 
     float getWormY(int i) {
-        return map(noise(i * noiseInterval + 1 + frameCount * frequency), 0, 1, 0, height);
+        return map(noise(i *10* noiseInterval + 1 + frameCount * frequency), 0, 1, 0, height);
     }
 }
