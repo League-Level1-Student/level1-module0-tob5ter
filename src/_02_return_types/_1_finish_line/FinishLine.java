@@ -1,5 +1,5 @@
 package _02_return_types._1_finish_line;
-
+import javax.swing.JOptionPane;
 
 
 import java.util.Random;
@@ -17,17 +17,19 @@ public class FinishLine {
 	
 	public static void main(String[] args) {
 		//1. Call the drawFinishLine() method
-		
+		drawFinishLine();
 		//2. Call the crazyMove() method to move the robot
-		
+		crazyMove();
 		//3. Call the getTotalDistance() and save what is returned into a variable
-		
+		int totalDistance = getTotalDistance();
 		//4. Call the hasCrossedFinishLine() method and save what is returned into a variable
-		
+		boolean hasCrossedFinishLine = hasCrossedFinishLine();
 		//5. If the robot has crossed the finish line... 
 			
 			//6. Use a pop up to say the robot finished and how far it went
-		
+		if(hasCrossedFinishLine == true) {
+			JOptionPane.showInputDialog(null, "Hi");
+		}
 		
 		//7. Else use a pop up to say the robot did not finish and how far it went
 		

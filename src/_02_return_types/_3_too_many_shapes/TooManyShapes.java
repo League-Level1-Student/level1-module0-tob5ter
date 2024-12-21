@@ -9,17 +9,28 @@ import javax.swing.JOptionPane;
 import org.jointheleague.graphical.robot.Robot;
 
 public class TooManyShapes {
-	static Robot rob = new Robot();
+	static Robot rob = new Robot("mini");
+	
 
 	public static void main(String[] args) {
+		int angle = 0;
 		//1. Ask the user how many sides they want their shape to be
-		
+			String a = JOptionPane.showInputDialog("How many sides do you want your shape to be");
+			int sides = Integer.parseInt(a);
 		//2. Ask the user how many shapes they want
-		
+			String b = JOptionPane.showInputDialog("How many shapes do you want");
+			int shapes = Integer.parseInt(b);
 		//3. Call canMakeShape() and save what is returned into a variable
-		
+			boolean canMakeShape = canMakeShape(sides);
 		//4. If the shape CAN be drawn
-		
+			if(canMakeShape == true) {
+				angle = calculateTurnAngle(sides);
+			}
+			
+			drawPolygons(sides,shapes,angle);
+			if(sides<4) {
+				notEnoughSides();
+			}
 			//5. Call and save what is returned from calculateTurnAngle()
 		
 			//6. Use drawPolygons() to draw your shape

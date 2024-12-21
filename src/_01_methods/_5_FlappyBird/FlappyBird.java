@@ -10,11 +10,18 @@ public class FlappyBird extends PApplet {
     PImage pipeBottom;
     PImage pipeTop;
     PImage bird;
-    float y=200f;
+    float birdY=200f;
     float birdYVelocity = -15f;
     float gravity = 0.5f;
-    int x = 800;
-    int upperPipeHeight = (int) random(100, 250);
+    int pipeX = 800;
+    int upperPipeHeight = (int) random(100, 300);
+    int pipeWidth = 60;
+    int birdX = 200;
+    int lowerPipeTop = (int) random(300,500);
+    int first = 255;
+    int second = 243;
+    int third = 74;
+    
     @Override
     public void settings() {
         size(WIDTH, HEIGHT);
@@ -22,37 +29,45 @@ public class FlappyBird extends PApplet {
 
     @Override
     public void setup() {
-    	
+    	noStroke();
     }
 
     @Override
     public void draw() {
     	background(103, 157, 245);
-    	fill(255, 243, 74);
-    	stroke(0,0,0);
-    	y=y+birdYVelocity;
-    	x-=3;
-    	if(x==2) {
-    		x=800;
-    		 upperPipeHeight = (int) random(100, 250);
+    	fill(first,second,third);
+    	birdY=birdY+birdYVelocity;
+    	pipeX-=3;
+    	if(pipeX==2) {
+    		pipeX=800;
+    		upperPipeHeight = (int) random(100, 300);
+    		lowerPipeTop = (int) random(300, 500);
     	}
-    	ellipse(200, y, 50,50);
+    	ellipse(birdX, birdY, 50,50);
     	birdYVelocity+=gravity;
     	fill(12, 122, 10);
-    	rect(x, 0, 60, upperPipeHeight);
+    	rect(pipeX, 0, pipeWidth, upperPipeHeight);
+    	rect(pipeX, 450, pipeWidth, lowerPipeTop);
+    	if(intersectsPipes() == true) {
+    		first = 103;
+     		second = 157;
+     		third = 245;
+    	}
     }
-    boolean intersectsPipes() { 
-        if (y < upperPipeHeight && 200 > pipeX && 200 < (pipeX+pipeWidth)){
-           return true; }
-       else if (y>lowerPipeTop && 200 > pipeX && 200 < (pipeX+pipeWidth)) {
-           return true; }
-       else { return false; }
-    }
+    
     public void mousePressed() {
     	if(mousePressed) {
     		birdYVelocity=-10;
     	}
     }
+    boolean intersectsPipes() { 
+        if (birdY < upperPipeHeight && birdX > pipeX && birdX < (pipeX+pipeWidth)){
+           return true; }
+       else if (birdY>lowerPipeTop && birdX > pipeX && birdX < (pipeX+pipeWidth)) {
+           return true; }
+       else { return false; }
+}
+
 
     static public void main(String[] args) {
         PApplet.main(FlappyBird.class.getName());
