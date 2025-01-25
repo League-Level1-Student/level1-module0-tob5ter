@@ -1,11 +1,13 @@
 package _03_gui_with_help._3_drum_kit;
 
 import java.awt.event.MouseEvent;
+import javax.swing.JPanel;
 import java.awt.event.MouseListener;
 import java.net.URL;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
@@ -17,27 +19,28 @@ public class DrumKit implements MouseListener {
 
     public void run() {
         //  Make a JFrame variable and initialize it using "new JFrame()"
-
+    		JFrame jFrame = new JFrame();
         //  Make the frame visible and
         // set its default close operation to JFrame.EXIT_ON_CLOSE
-
+    		jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         //  Set the title of the frame
-
+    		jFrame.setTitle("DrumKit");
         //  Make a JPanel variable and initialize it using "new JPanel().
-
+    		JPanel myPanel = new JPanel();
         //  Add the panel to the frame. (The panel is invisible.)
-
+    		jFrame.add(myPanel);
         //  Use the image of a drum provided ("snare.jpg") or
         //  download an image of a drum from the Internet and drop it into the
         //  Drum Kit recipe package.
-
+    		
         //  Put the name of the drum image file in a String variable.
-
+    		String snarejpg = "snare.jpg";
         //  Edit the next line to use your String variable
-        // drumLabel = createLabelImage(drumImageString);
-
+         drumLabel = createLabelImage(snarejpg);
+    		
         //  Add the label to the panel
-
+         myPanel.add(drumLabel);
+         jFrame.pack();
         //  Call the pack() method on the frame.
         // Run your program. Do you see your drum image?
 

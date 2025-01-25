@@ -57,12 +57,14 @@ public class PhotoQuiz {
 			quizWindow.pack();
 			String q = JOptionPane.showInputDialog("how many heads does this snake have?");
 			int heads = Integer.parseInt(q);
+			
 			if(heads==(2)) {
 				JOptionPane.showMessageDialog(quizWindow, "Correct!");
 			}
 			else {
 				JOptionPane.showMessageDialog(quizWindow, "Incorrect!");
 			}
+			
 		// 11. add the second image to the quiz window
 
 		// 12. pack the quiz window
